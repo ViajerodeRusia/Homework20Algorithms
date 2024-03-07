@@ -15,7 +15,7 @@ public class IntegerListImpl implements IntegerList {
     @Override
     public void add(Integer item) {
         if (size == integerArray.length) {
-            expandCapacity();
+            grow();
         }
         if (item == null) {
             throw new IllegalArgumentException();
@@ -30,7 +30,7 @@ public class IntegerListImpl implements IntegerList {
             throw new IndexOutOfBoundsException();
         }
         if (size == integerArray.length) {
-            expandCapacity();
+            grow();
         }
         if (item == null) {
             throw new IllegalArgumentException();
@@ -146,7 +146,7 @@ public class IntegerListImpl implements IntegerList {
     @Override
     public void sort(Integer[] arr, int low, int high) {
         if (low < high) {
-            Integer pi = partition(integerArray, low, high);
+            int pi = partition(integerArray, low, high);
             sort(integerArray, low, pi - 1);
             sort(integerArray, pi + 1, high);
         }
@@ -175,8 +175,8 @@ public class IntegerListImpl implements IntegerList {
         return newArray;
     }
 
-    public void expandCapacity() {
-        int newCapacity = integerArray.length * 2;
+    private void grow() {
+        int newCapacity = (int) (integerArray.length * 1.5);
         integerArray = Arrays.copyOf(integerArray, newCapacity);
     }
 }
