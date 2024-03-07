@@ -28,7 +28,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public void add(int index, String item) {
-        if(index < size || index > size) {
+        if(index > size) {
             throw new IndexOutOfBoundsException();
         }
         if(size == stringArray.length) {
@@ -84,7 +84,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public int indexOf(String item) {
-        for (int i = 0; i < stringArray.length; i++) {
+        for (int i = 0; i < size; i++) {
             if(stringArray[i].equals(item)) {
                 return i;
             }
@@ -94,7 +94,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public int lastIndexOf(String item) {
-        for (int i = stringArray.length - 1; i >= 0; i--) {
+        for (int i = size - 1; i >= 0; i--) {
             if(stringArray[i].equals(item)) {
                 return i;
             }
@@ -104,7 +104,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public String get(int index) {
-        if(index < size || index > size) {
+        if(index > size) {
             throw new IndexOutOfBoundsException("Requested index is out of bounds");
         }
         return stringArray[index];
