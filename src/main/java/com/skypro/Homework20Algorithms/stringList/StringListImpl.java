@@ -55,7 +55,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public String remove(String item) {
-        for (int i = 0; i < stringArray.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (stringArray[i].equals(item)) {
                 return remove(i);
             }
@@ -76,7 +76,7 @@ public class StringListImpl implements StringList{
 
     @Override
     public boolean contains(String item) {
-        for (int i = 0; i < stringArray.length; i++) {
+        for (int i = 0; i < size; i++) {
             if(stringArray[i].equals(item)) return true;
         }
         return false;
